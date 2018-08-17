@@ -1,0 +1,16 @@
+Package: FuzzyDateJoin
+Type: Package
+Title: Joins of Longitudinal Data by IDs and Fuzzy Dates
+Version: 0.1.0
+Authors@R: person("L. D. Nicolas", "May", email = "LDNicolasMay@gmail.com", role = c("aut", "cre"))
+Description: This package contains functions for joining longitudinal datasets by ID and fuzzy dates (+/- day intervals). 
+License: CC0
+Encoding: UTF-8
+LazyData: true
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp
+RoxygenNote: 6.1.0
+Suggests: 
+    testthat
