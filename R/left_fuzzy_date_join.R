@@ -3,7 +3,7 @@
 #' A Function to Perform Left Outer Joins of Longitudinal Data
 #'
 #' This function allows you to join longitudinal data sets.
-#' @param x  X data frame.
+#' @param x X data frame.
 #' @param y Y data frame.
 #' @param x_id_col Name of column in X data frame with IDs.
 #' @param y_id_col Name of column in Y data frame with IDs.
