@@ -67,6 +67,42 @@ left_fuzzy_date_join <-
       stop("`y_date_col` must be of 'Date' class")
     }
 
+    # Check if x_id_col / y_id_col are duplicates,
+    #   and check if x_date_col / y_date_col are duplicates.
+    # If so, append `_x` and `_y` to the column names.
+    x_names_in_y <- names(x) %in% names(y)
+    y_names_in_x <- names(y) %in% names(x)
+    if (x_id_col %in% names(x)[x_names_in_y]) {
+      names(x)[which(names(x) == x_id_col)] <-
+        paste0(names(x)[which(names(x) == x_id_col)], "_x")
+      x_id_col <- paste0(x_id_col, "_x")
+    }
+    if (y_id_col %in% names(y)[y_names_in_x]) {
+      names(y)[which(names(y) == y_id_col)] <-
+        paste0(names(y)[which(names(y) == y_id_col)], "_y")
+      y_id_col <- paste0(y_id_col, "_y")
+    }
+    if (x_date_col %in% names(x)[x_names_in_y]) {
+      names(x)[which(names(x) == x_date_col)] <-
+        paste0(names(x)[which(names(x) == x_date_col)], "_x")
+      x_date_col <- paste0(x_date_col, "_x")
+    }
+    if (y_date_col %in% names(y)[y_names_in_x]) {
+      names(y)[which(names(y) == y_date_col)] <-
+        paste0(names(y)[which(names(y) == y_date_col)], "_y")
+      y_date_col <- paste0(y_date_col, "_y")
+    }
+
+    # Rename duplicately named columns, appending with `_x` and `_y`
+    x_names_in_y <- names(x) %in% names(y)
+    y_names_in_x <- names(y) %in% names(x)
+    if (any(x_names_in_y)) {
+      names(x)[x_names_in_y] <- paste0(names(x)[x_names_in_y], "_x")
+    }
+    if (any(y_names_in_x)) {
+      names(y)[y_names_in_x] <- paste0(names(y)[y_names_in_x], "_y")
+    }
+
     # Create data frame that defines which rows from X and Y to keep
     Z_rows <-
       left_fuzzy_date_join_cpp(
