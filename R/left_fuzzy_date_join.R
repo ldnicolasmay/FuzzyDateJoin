@@ -105,7 +105,7 @@ left_fuzzy_date_join <-
 
     # Create data frame that defines which rows from X and Y to keep
     Z_rows <-
-      left_fuzzy_date_join_cpp(
+      LeftFuzzyDateJoin(
         x = x, y = y,
         x_id_col = x_id_col, y_id_col = y_id_col,
         x_date_col = x_date_col, y_date_col = y_date_col,

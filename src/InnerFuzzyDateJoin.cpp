@@ -5,7 +5,7 @@
 using namespace Rcpp;
 
 
-//' Left fuzzy date join
+//' Inner fuzzy date join
 //'
 //' @param x X data frame.
 //' @param y Y data frame.
@@ -17,14 +17,14 @@ using namespace Rcpp;
 //' @param x_intvl_more Number of days after X date to match to Y date. Defaults to 0.
 //' @export
 // [[Rcpp::export]]
-DataFrame left_fuzzy_date_join_cpp(DataFrame x,
-                                   DataFrame y,
-                                   String x_id_col,
-                                   String y_id_col,
-                                   String x_date_col,
-                                   String y_date_col,
-                                   int x_intvl_less = 0,
-                                   int x_intvl_more = 0) {
+DataFrame InnerFuzzyDateJoin(DataFrame x,
+                             DataFrame y,
+                             String x_id_col,
+                             String y_id_col,
+                             String x_date_col,
+                             String y_date_col,
+                             int x_intvl_less = 0,
+                             int x_intvl_more = 0) {
   int x_n_row = x.nrows(); // int x_n_col = x.size();
   int y_n_row = y.nrows(); // int y_n_col = y.size();
 
@@ -93,13 +93,6 @@ DataFrame left_fuzzy_date_join_cpp(DataFrame x,
       x_y_date_diff.push_back(xyt_x_y_date_diff[x_y_date_diff_min_idx]);
       i_row.push_back(xyt_i_row[x_y_date_diff_min_idx]);
       j_row.push_back(xyt_j_row[x_y_date_diff_min_idx]);
-    } else {
-      id.push_back(x_id_orig[i]);
-      x_date.push_back(x_date_orig[i]);
-      y_date.push_back(NA_INTEGER);
-      x_y_date_diff.push_back(NA_INTEGER);
-      i_row.push_back(i);
-      j_row.push_back(NA_INTEGER);
     }
   }
 
