@@ -125,5 +125,8 @@ left_fuzzy_date_join <-
     Z[[x_date_col]] <- as.Date(Z[[x_date_col]], origin = "1970-01-01")
     Z[[y_date_col]] <- as.Date(Z[[y_date_col]], origin = "1970-01-01")
 
+    # Ensure row names aren't NA
+    if (nrow(Z) > 0) { rownames(Z) <- 1:(nrow(Z)) }
+
     return(Z)
   }
