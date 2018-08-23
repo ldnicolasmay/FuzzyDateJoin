@@ -15,6 +15,7 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
     date = as.Date(c('2015-06-02')),
     data = c(-10.0))
 
+
   # Derive joined data frames Z_* using inner, left, and right fuzzy joins ----
 
   # _ Inner ----
@@ -75,8 +76,9 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
                           x_date_col = 'date', y_date_col = 'date',
                           y_intvl_less = 0, y_intvl_more = 0,
                           keep_x_id = TRUE)
+  # Empty data frame with appropriate column names
   empty_df <-
-    setNames( # empty data frame with appropriate column names
+    setNames(
       object = data.frame(matrix(ncol = 6, nrow = 0)),
       nm = c('id_x', 'date_x', 'data_x',
              'id_y', 'date_y', 'data_y')
@@ -88,6 +90,7 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
   empty_df[, 'id_y']   <- as.integer(empty_df[, 'id_y'])
   empty_df[, 'date_y'] <- as.Date(empty_df[, 'date_y'])
   empty_df[, 'data_y'] <- as.numeric(empty_df[, 'data_y'])
+
 
   # Define expectations ----
 
@@ -160,15 +163,15 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
                  date_y = as.Date(c('2015-06-01')),
                  data_y = c(10.0)
                ))
-  # expect_equal(Z_right_mis_match,
-  #              data.frame(
-  #                id_x = c(NA_integer_),
-  #                date_x = as.Date(c(NA_integer_), origin = '1970-01-01'),
-  #                data_x = c(NA_real_),
-  #                id_y = c(1L),
-  #                date_y = as.Date(c('2015-06-02')),
-  #                data_y = c(-10.0)
-  #              ))
+  expect_equal(Z_right_mis_match,
+               data.frame(
+                 id_x = c(NA_integer_),
+                 date_x = as.Date(c(NA_integer_), origin = '1970-01-01'),
+                 data_x = c(NA_real_),
+                 id_y = c(1L),
+                 date_y = as.Date(c('2015-06-02')),
+                 data_y = c(-10.0)
+               ))
 
 })
 
