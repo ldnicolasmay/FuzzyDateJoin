@@ -1,13 +1,13 @@
 # FuzzyDateJoin
 R package containing functions for joining longitudinal datasets by ID and fuzzy dates (+/- date ranges).
 
-1. Install `FuzzyDateJoin` via the `devtools` package
+1. Install `FuzzyDateJoin` via the `devtools` package.
 
 ```r
 devtools::install_github('ldnicolasmay/FuzzyDateJoin')
 ```
 
-2. Create tibbles X and Y with longitudinal data
+2. Create data frames X and Y with longitudinal data.
 
 ```r
 X <- data.frame(
@@ -25,7 +25,7 @@ Y <- data.frame(
   y_data = runif(10, min = -100, max = 0))
 ```
 
-3. Use the included functions to do data joins based on IDs and day ranges
+3. Use the included functions to do data joins based on IDs and day ranges.
 
 ```r
 intvl_less <- 5
