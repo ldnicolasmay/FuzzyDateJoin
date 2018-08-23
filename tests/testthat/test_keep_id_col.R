@@ -7,11 +7,11 @@ test_that('Secondary ID columns are retained or removed appropriately', {
 
   # Define input data frames X and Y ----
   X <- data.frame(
-    id = c(1L),
+    id   = c(1L),
     date = as.Date(c('2015-06-01')),
     data = runif(1, min = 0, max = 10))
   Y <- data.frame(
-    id = c(1L),
+    id   = c(1L),
     date = as.Date(c('2015-06-01')),
     data = runif(1, min = -100, max = 0))
 

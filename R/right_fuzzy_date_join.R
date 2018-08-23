@@ -113,7 +113,7 @@ right_fuzzy_date_join <-
         x_intvl_less = y_intvl_less,
         x_intvl_more = y_intvl_more)
 
-    # Keep `y_id` column in return data frame?
+    # Keep `x_id` column in return data frame?
     if (keep_x_id) {
       Z <- cbind(x[Z_rows$j_rows + 1, ],
                  y[Z_rows$i_rows + 1, ])

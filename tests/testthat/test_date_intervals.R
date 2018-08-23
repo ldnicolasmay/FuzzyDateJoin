@@ -7,11 +7,11 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
 
   # Define input data frames X and Y ----
   X <- data.frame(
-    id = c(1L),
+    id   = c(1L),
     date = as.Date(c('2015-06-01')),
     data = c(10.0))
   Y <- data.frame(
-    id = c(1L),
+    id   = c(1L),
     date = as.Date(c('2015-06-02')),
     data = c(-10.0))
 
@@ -97,19 +97,19 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
   # _ Inner ----
   expect_equal(Z_inner_fuzzy_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-02')),
                  data_y = c(-10.0)
                ))
   expect_equal(Z_inner_exact_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-01')),
                  data_y = c(10.0)
                ))
@@ -118,28 +118,28 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
   # _ Left ----
   expect_equal(Z_left_fuzzy_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-02')),
                  data_y = c(-10.0)
                ))
   expect_equal(Z_left_exact_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-01')),
                  data_y = c(10.0)
                ))
   expect_equal(Z_left_mis_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(NA_integer_),
+                 id_y   = c(NA_integer_),
                  date_y = as.Date(c(NA_integer_), origin = '1970-01-01'),
                  data_y = c(NA_real_)
                ))
@@ -147,28 +147,28 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
   # _ Right ----
   expect_equal(Z_right_fuzzy_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-02')),
                  data_y = c(-10.0)
                ))
   expect_equal(Z_right_exact_match,
                data.frame(
-                 id_x = c(1L),
+                 id_x   = c(1L),
                  date_x = as.Date(c('2015-06-01')),
                  data_x = c(10.0),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-01')),
                  data_y = c(10.0)
                ))
   expect_equal(Z_right_mis_match,
                data.frame(
-                 id_x = c(NA_integer_),
+                 id_x   = c(NA_integer_),
                  date_x = as.Date(c(NA_integer_), origin = '1970-01-01'),
                  data_x = c(NA_real_),
-                 id_y = c(1L),
+                 id_y   = c(1L),
                  date_y = as.Date(c('2015-06-02')),
                  data_y = c(-10.0)
                ))

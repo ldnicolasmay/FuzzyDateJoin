@@ -1,4 +1,4 @@
-// fuzzy_date_join_rcpp.cpp
+// LeftFuzzyDateJoin.cpp
 
 #include <Rcpp.h>
 #include <getMinIndex.h>

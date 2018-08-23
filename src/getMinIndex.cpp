@@ -1,3 +1,5 @@
+// getMinIndex.cpp
+
 #include <Rcpp.h>
 #include <getMinIndex.h>
 
