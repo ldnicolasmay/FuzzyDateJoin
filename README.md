@@ -1,5 +1,5 @@
 # FuzzyDateJoin
-Functions for joining longitudinal datasets by ID and fuzzy dates (+/- date ranges).
+R package containing functions for joining longitudinal datasets by ID and fuzzy dates (+/- date ranges).
 
 1. Install `FuzzyDateJoin` via the `devtools` package
 
