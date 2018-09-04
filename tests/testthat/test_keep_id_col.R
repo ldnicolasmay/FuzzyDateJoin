@@ -17,7 +17,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
 
   # Derive joined data frames Z_* using inner, left, and right fuzzy joins ----
   Z_inner_keep_y <-
-    # inner_fuzzy_date_join(
     inner(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -25,7 +24,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = TRUE)
   Z_inner_remove_y <-
-    # inner_fuzzy_date_join(
     inner(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -33,7 +31,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = FALSE)
   Z_outer_left_keep_y <-
-    # left_fuzzy_date_join(
     outer_left(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -41,7 +38,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = TRUE)
   Z_outer_left_remove_y <-
-    # left_fuzzy_date_join(
     outer_left(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -49,7 +45,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = FALSE)
   Z_outer_right_keep_x <-
-    # right_fuzzy_date_join(
     outer_right(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -57,7 +52,6 @@ test_that('Secondary ID columns are retained or removed appropriately', {
       y_intvl_less = 0, y_intvl_more = 0,
       keep_x_id = TRUE)
   Z_outer_right_remove_x <-
-    # right_fuzzy_date_join(
     outer_right(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',

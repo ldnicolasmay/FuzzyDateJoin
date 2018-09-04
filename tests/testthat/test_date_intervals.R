@@ -38,21 +38,18 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
           x_intvl_less = 0, x_intvl_more = 0,
           keep_y_id = TRUE)
   # _ Outer Left ----
-  # Z_left_fuzzy_match <-
   Z_outer_left_fuzzy_match <-
     outer_left(x = X, y = Y,
                x_id_col = 'id', y_id_col = 'id',
                x_date_col = 'date', y_date_col = 'date',
                x_intvl_less = 1, x_intvl_more = 1,
                keep_y_id = TRUE)
-  # Z_left_exact_match <-
   Z_outer_left_exact_match <-
     outer_left(x = X, y = X,
                x_id_col = 'id', y_id_col = 'id',
                x_date_col = 'date', y_date_col = 'date',
                x_intvl_less = 0, x_intvl_more = 0,
                keep_y_id = TRUE)
-  # Z_left_mis_match <-
   Z_outer_left_mis_match <-
     outer_left(x = X, y = Y,
                x_id_col = 'id', y_id_col = 'id',
@@ -61,21 +58,18 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
                keep_y_id = TRUE)
 
   # _ Outer Right ----
-  # Z_right_fuzzy_match <-
   Z_outer_right_fuzzy_match <-
     outer_right(x = X, y = Y,
                 x_id_col = 'id', y_id_col = 'id',
                 x_date_col = 'date', y_date_col = 'date',
                 y_intvl_less = 1, y_intvl_more = 1,
                 keep_x_id = TRUE)
-  # Z_right_exact_match <-
   Z_outer_right_exact_match <-
     outer_right(x = X, y = X,
                 x_id_col = 'id', y_id_col = 'id',
                 x_date_col = 'date', y_date_col = 'date',
                 y_intvl_less = 0, y_intvl_more = 0,
                 keep_x_id = TRUE)
-  # Z_right_mis_match <-
   Z_outer_right_mis_match <-
     outer_right(x = X, y = Y,
                 x_id_col = 'id', y_id_col = 'id',
@@ -127,7 +121,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
 
   # _ Outer Left ----
   expect_equal(
-    # Z_left_fuzzy_match,
     Z_outer_left_fuzzy_match,
     data.frame(
       id_x   = c(1L),
@@ -138,7 +131,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
       data_y = c(-10.0)
     ))
   expect_equal(
-    # Z_left_exact_match,
     Z_outer_left_exact_match,
     data.frame(
       id_x   = c(1L),
@@ -149,7 +141,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
       data_y = c(10.0)
     ))
   expect_equal(
-    # Z_left_mis_match,
     Z_outer_left_mis_match,
     data.frame(
       id_x   = c(1L),
@@ -162,7 +153,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
 
   # _ Outer Right ----
   expect_equal(
-    # Z_right_fuzzy_match,
     Z_outer_right_fuzzy_match,
     data.frame(
       id_x   = c(1L),
@@ -173,7 +163,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
       data_y = c(-10.0)
     ))
   expect_equal(
-    # Z_right_exact_match,
     Z_outer_right_exact_match,
     data.frame(
       id_x   = c(1L),
@@ -184,7 +173,6 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
       data_y = c(10.0)
     ))
   expect_equal(
-    # Z_right_mis_match,
     Z_outer_right_mis_match,
     data.frame(
       id_x   = c(NA_integer_),

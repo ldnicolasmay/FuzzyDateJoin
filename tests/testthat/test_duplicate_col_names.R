@@ -17,7 +17,6 @@ test_that('Column names duplicated between X and Y are changed appropriately', {
 
   # Derive joined data frames Z_* using inner, left, and right fuzzy joins ----
   Z_inner <-
-    # inner_fuzzy_date_join(
     inner(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -25,7 +24,6 @@ test_that('Column names duplicated between X and Y are changed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = TRUE)
   Z_left <-
-    # left_fuzzy_date_join(
     outer_left(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
@@ -33,7 +31,6 @@ test_that('Column names duplicated between X and Y are changed appropriately', {
       x_intvl_less = 0, x_intvl_more = 0,
       keep_y_id = TRUE)
   Z_right <-
-    # right_fuzzy_date_join(
     outer_right(
       x = X, y = Y,
       x_id_col = 'id', y_id_col = 'id',
