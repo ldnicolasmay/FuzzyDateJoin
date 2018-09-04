@@ -1,6 +1,6 @@
-# left_fuzzy_date_join.R
+# inner.R
 
-#' A Function to Perform Left Outer Joins of Longitudinal Data
+#' A Function to Perform Inner Joins of Longitudinal Data
 #'
 #' This function allows you to join longitudinal data sets.
 #' @param x X data frame.
@@ -12,7 +12,7 @@
 #' @param x_intvl_less Number of days before X date to fuzzy match to Y date. Defaults to 0.
 #' @param x_intvl_more Number of days after X date to fuzzy match to Y date. Defaults to 0.
 #' @param keep_y_id Keep column in Y data frame with IDs? Defaults to TRUE.
-#' @keywords fuzzy, left, data, join, longitudinal
+#' @keywords fuzzy, inner, data, join, longitudinal
 #' @export
 #' @examples
 #' # Define basic data frames X and Y
@@ -31,21 +31,21 @@
 #'   y_data = runif(10, min = -100, max = 0))
 #'
 #' # Use default values where possible
-#' left_fuzzy_date_join(x = X, y = Y,
-#'                      x_id = "x_id", y_id = "y_id",
-#'                      x_date = "x_date", y_date = "y_date")
+#' inner(x = X, y = Y,
+#'       x_id = "x_id", y_id = "y_id",
+#'       x_date = "x_date", y_date = "y_date")
 #'
 #' # Define fuzzy date matching intervals and remove `y_id` column
 #' intvl_less <- 5
 #' intvl_more <- 3
-#' left_fuzzy_date_join(x = X, y = Y,
-#'                      x_id = "x_id", y_id = "y_id",
-#'                      x_date = "x_date", y_date = "y_date",
-#'                      x_intvl_less = intvl_less, x_intvl_more = intvl_more,
-#'                      keep_y_id = FALSE)
+#' inner(x = X, y = Y,
+#'       x_id = "x_id", y_id = "y_id",
+#'       x_date = "x_date", y_date = "y_date",
+#'       x_intvl_less = intvl_less, x_intvl_more = intvl_more,
+#'       keep_y_id = FALSE)
 
-# R FUNCTION - LEFT FUZZY JOIN ----
-left_fuzzy_date_join <-
+# R FUNCTION - INNER FUZZY DATE JOIN ----
+inner <-
 
   function(x, y,
            x_id_col, y_id_col,
@@ -105,7 +105,7 @@ left_fuzzy_date_join <-
 
     # Create data frame that defines which rows from X and Y to keep
     Z_rows <-
-      LeftFuzzyDateJoin(
+      InnerRows(
         x = x, y = y,
         x_id_col = x_id_col, y_id_col = y_id_col,
         x_date_col = x_date_col, y_date_col = y_date_col,

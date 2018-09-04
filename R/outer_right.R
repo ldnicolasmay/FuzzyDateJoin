@@ -1,6 +1,6 @@
-# inner_fuzzy_date_join.R
+# outer_right.R
 
-#' A Function to Perform Inner Joins of Longitudinal Data
+#' A Function to Perform Right Outer Joins of Longitudinal Data
 #'
 #' This function allows you to join longitudinal data sets.
 #' @param x X data frame.
@@ -9,10 +9,10 @@
 #' @param y_id_col Name of column in Y data frame with IDs.
 #' @param x_date_col Name of column in X data frame with dates.
 #' @param y_date_col Name of column in Y data frame with dates.
-#' @param x_intvl_less Number of days before X date to fuzzy match to Y date. Defaults to 0.
-#' @param x_intvl_more Number of days after X date to fuzzy match to Y date. Defaults to 0.
-#' @param keep_y_id Keep column in Y data frame with IDs? Defaults to TRUE.
-#' @keywords fuzzy, inner, data, join, longitudinal
+#' @param y_intvl_less Number of days before Y date to fuzzy match to X date. Defaults to 0.
+#' @param y_intvl_more Number of days after Y date to fuzzy match to X date. Defaults to 0.
+#' @param keep_x_id Keep column in X data frame with IDs? Defaults to TRUE.
+#' @keywords fuzzy, right, data, join, longitudinal
 #' @export
 #' @examples
 #' # Define basic data frames X and Y
@@ -31,27 +31,28 @@
 #'   y_data = runif(10, min = -100, max = 0))
 #'
 #' # Use default values where possible
-#' inner_fuzzy_date_join(x = X, y = Y,
-#'                       x_id = "x_id", y_id = "y_id",
-#'                       x_date = "x_date", y_date = "y_date")
+#' outer_right(x = X, y = Y,
+#'             x_id = "x_id", y_id = "y_id",
+#'             x_date = "x_date", y_date = "y_date")
 #'
 #' # Define fuzzy date matching intervals and remove `y_id` column
 #' intvl_less <- 5
 #' intvl_more <- 3
-#' inner_fuzzy_date_join(x = X, y = Y,
-#'                       x_id = "x_id", y_id = "y_id",
-#'                       x_date = "x_date", y_date = "y_date",
-#'                       x_intvl_less = intvl_less, x_intvl_more = intvl_more,
-#'                       keep_y_id = FALSE)
+#' outer_right(x = X, y = Y,
+#'             x_id = "x_id", y_id = "y_id",
+#'             x_date = "x_date", y_date = "y_date",
+#'             y_intvl_less = intvl_less, y_intvl_more = intvl_more,
+#'             keep_x_id = FALSE)
 
-# R FUNCTION - INNER FUZZY JOIN ----
-inner_fuzzy_date_join <-
+# R FUNCTION - RIGHT FUZZY JOIN ----
+#   *Note that this uses LeftFuzzyDateJoin, but swaps x and y
+outer_right <-
 
   function(x, y,
            x_id_col, y_id_col,
            x_date_col, y_date_col,
-           x_intvl_less = 0, x_intvl_more = 0,
-           keep_y_id = TRUE) {
+           y_intvl_less = 0, y_intvl_more = 0,
+           keep_x_id = TRUE) {
 
     # Check inputs for correct classes
     if (!is.data.frame(x)) {
@@ -105,20 +106,20 @@ inner_fuzzy_date_join <-
 
     # Create data frame that defines which rows from X and Y to keep
     Z_rows <-
-      InnerFuzzyDateJoin(
-        x = x, y = y,
-        x_id_col = x_id_col, y_id_col = y_id_col,
-        x_date_col = x_date_col, y_date_col = y_date_col,
-        x_intvl_less = x_intvl_less,
-        x_intvl_more = x_intvl_more)
+      OuterLeftRows(
+        x = y, y = x,
+        x_id_col = y_id_col, y_id_col = x_id_col,
+        x_date_col = y_date_col, y_date_col = x_date_col,
+        x_intvl_less = y_intvl_less,
+        x_intvl_more = y_intvl_more)
 
-    # Keep `y_id` column in return data frame?
-    if (keep_y_id) {
-      Z <- cbind(x[Z_rows$i_rows + 1, ],
-                 y[Z_rows$j_rows + 1, ])
+    # Keep `x_id` column in return data frame?
+    if (keep_x_id) {
+      Z <- cbind(x[Z_rows$j_rows + 1, ],
+                 y[Z_rows$i_rows + 1, ])
     } else {
-      Z <- cbind(x[Z_rows$i_rows + 1, ],
-                 y[Z_rows$j_rows + 1, c(-1)])
+      Z <- cbind(x[Z_rows$j_rows + 1, c(-1)],
+                 y[Z_rows$i_rows + 1, ])
     }
 
     # Coerce `x_date` and `y_date` of return data frame back to Date class

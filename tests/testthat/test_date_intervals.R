@@ -20,62 +20,68 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
 
   # _ Inner ----
   Z_inner_fuzzy_match <-
-    inner_fuzzy_date_join(x = X, y = Y,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          x_intvl_less = 1, x_intvl_more = 1,
-                          keep_y_id = TRUE)
+    inner(x = X, y = Y,
+          x_id_col = 'id', y_id_col = 'id',
+          x_date_col = 'date', y_date_col = 'date',
+          x_intvl_less = 1, x_intvl_more = 1,
+          keep_y_id = TRUE)
   Z_inner_exact_match <-
-    inner_fuzzy_date_join(x = X, y = X,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          x_intvl_less = 0, x_intvl_more = 0,
-                          keep_y_id = TRUE)
+    inner(x = X, y = X,
+          x_id_col = 'id', y_id_col = 'id',
+          x_date_col = 'date', y_date_col = 'date',
+          x_intvl_less = 0, x_intvl_more = 0,
+          keep_y_id = TRUE)
   Z_inner_mis_match <-
-    inner_fuzzy_date_join(x = X, y = Y,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          x_intvl_less = 0, x_intvl_more = 0,
-                          keep_y_id = TRUE)
-  # _ Left ----
-  Z_left_fuzzy_match <-
-    left_fuzzy_date_join(x = X, y = Y,
-                         x_id_col = 'id', y_id_col = 'id',
-                         x_date_col = 'date', y_date_col = 'date',
-                         x_intvl_less = 1, x_intvl_more = 1,
-                         keep_y_id = TRUE)
-  Z_left_exact_match <-
-    left_fuzzy_date_join(x = X, y = X,
-                         x_id_col = 'id', y_id_col = 'id',
-                         x_date_col = 'date', y_date_col = 'date',
-                         x_intvl_less = 0, x_intvl_more = 0,
-                         keep_y_id = TRUE)
-  Z_left_mis_match <-
-    left_fuzzy_date_join(x = X, y = Y,
-                         x_id_col = 'id', y_id_col = 'id',
-                         x_date_col = 'date', y_date_col = 'date',
-                         x_intvl_less = 0, x_intvl_more = 0,
-                         keep_y_id = TRUE)
+    inner(x = X, y = Y,
+          x_id_col = 'id', y_id_col = 'id',
+          x_date_col = 'date', y_date_col = 'date',
+          x_intvl_less = 0, x_intvl_more = 0,
+          keep_y_id = TRUE)
+  # _ Outer Left ----
+  # Z_left_fuzzy_match <-
+  Z_outer_left_fuzzy_match <-
+    outer_left(x = X, y = Y,
+               x_id_col = 'id', y_id_col = 'id',
+               x_date_col = 'date', y_date_col = 'date',
+               x_intvl_less = 1, x_intvl_more = 1,
+               keep_y_id = TRUE)
+  # Z_left_exact_match <-
+  Z_outer_left_exact_match <-
+    outer_left(x = X, y = X,
+               x_id_col = 'id', y_id_col = 'id',
+               x_date_col = 'date', y_date_col = 'date',
+               x_intvl_less = 0, x_intvl_more = 0,
+               keep_y_id = TRUE)
+  # Z_left_mis_match <-
+  Z_outer_left_mis_match <-
+    outer_left(x = X, y = Y,
+               x_id_col = 'id', y_id_col = 'id',
+               x_date_col = 'date', y_date_col = 'date',
+               x_intvl_less = 0, x_intvl_more = 0,
+               keep_y_id = TRUE)
 
-  # _ Right ----
-  Z_right_fuzzy_match <-
-    right_fuzzy_date_join(x = X, y = Y,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          y_intvl_less = 1, y_intvl_more = 1,
-                          keep_x_id = TRUE)
-  Z_right_exact_match <-
-    right_fuzzy_date_join(x = X, y = X,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          y_intvl_less = 0, y_intvl_more = 0,
-                          keep_x_id = TRUE)
-  Z_right_mis_match <-
-    right_fuzzy_date_join(x = X, y = Y,
-                          x_id_col = 'id', y_id_col = 'id',
-                          x_date_col = 'date', y_date_col = 'date',
-                          y_intvl_less = 0, y_intvl_more = 0,
-                          keep_x_id = TRUE)
+  # _ Outer Right ----
+  # Z_right_fuzzy_match <-
+  Z_outer_right_fuzzy_match <-
+    outer_right(x = X, y = Y,
+                x_id_col = 'id', y_id_col = 'id',
+                x_date_col = 'date', y_date_col = 'date',
+                y_intvl_less = 1, y_intvl_more = 1,
+                keep_x_id = TRUE)
+  # Z_right_exact_match <-
+  Z_outer_right_exact_match <-
+    outer_right(x = X, y = X,
+                x_id_col = 'id', y_id_col = 'id',
+                x_date_col = 'date', y_date_col = 'date',
+                y_intvl_less = 0, y_intvl_more = 0,
+                keep_x_id = TRUE)
+  # Z_right_mis_match <-
+  Z_outer_right_mis_match <-
+    outer_right(x = X, y = Y,
+                x_id_col = 'id', y_id_col = 'id',
+                x_date_col = 'date', y_date_col = 'date',
+                y_intvl_less = 0, y_intvl_more = 0,
+                keep_x_id = TRUE)
   # Empty data frame with appropriate column names
   empty_df <-
     setNames(
@@ -95,83 +101,99 @@ test_that('Date intervals `*_intvl_less` and `*_intvl_more` work appropriately',
   # Define expectations ----
 
   # _ Inner ----
-  expect_equal(Z_inner_fuzzy_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-02')),
-                 data_y = c(-10.0)
-               ))
-  expect_equal(Z_inner_exact_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-01')),
-                 data_y = c(10.0)
-               ))
-  expect_equal(Z_inner_mis_match, empty_df)
+  expect_equal(
+    Z_inner_fuzzy_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-02')),
+      data_y = c(-10.0)
+    ))
+  expect_equal(
+    Z_inner_exact_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-01')),
+      data_y = c(10.0)
+    ))
+  expect_equal(
+    Z_inner_mis_match,
+    empty_df)
 
-  # _ Left ----
-  expect_equal(Z_left_fuzzy_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-02')),
-                 data_y = c(-10.0)
-               ))
-  expect_equal(Z_left_exact_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-01')),
-                 data_y = c(10.0)
-               ))
-  expect_equal(Z_left_mis_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(NA_integer_),
-                 date_y = as.Date(c(NA_integer_), origin = '1970-01-01'),
-                 data_y = c(NA_real_)
-               ))
+  # _ Outer Left ----
+  expect_equal(
+    # Z_left_fuzzy_match,
+    Z_outer_left_fuzzy_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-02')),
+      data_y = c(-10.0)
+    ))
+  expect_equal(
+    # Z_left_exact_match,
+    Z_outer_left_exact_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-01')),
+      data_y = c(10.0)
+    ))
+  expect_equal(
+    # Z_left_mis_match,
+    Z_outer_left_mis_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(NA_integer_),
+      date_y = as.Date(c(NA_integer_), origin = '1970-01-01'),
+      data_y = c(NA_real_)
+    ))
 
-  # _ Right ----
-  expect_equal(Z_right_fuzzy_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-02')),
-                 data_y = c(-10.0)
-               ))
-  expect_equal(Z_right_exact_match,
-               data.frame(
-                 id_x   = c(1L),
-                 date_x = as.Date(c('2015-06-01')),
-                 data_x = c(10.0),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-01')),
-                 data_y = c(10.0)
-               ))
-  expect_equal(Z_right_mis_match,
-               data.frame(
-                 id_x   = c(NA_integer_),
-                 date_x = as.Date(c(NA_integer_), origin = '1970-01-01'),
-                 data_x = c(NA_real_),
-                 id_y   = c(1L),
-                 date_y = as.Date(c('2015-06-02')),
-                 data_y = c(-10.0)
-               ))
+  # _ Outer Right ----
+  expect_equal(
+    # Z_right_fuzzy_match,
+    Z_outer_right_fuzzy_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-02')),
+      data_y = c(-10.0)
+    ))
+  expect_equal(
+    # Z_right_exact_match,
+    Z_outer_right_exact_match,
+    data.frame(
+      id_x   = c(1L),
+      date_x = as.Date(c('2015-06-01')),
+      data_x = c(10.0),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-01')),
+      data_y = c(10.0)
+    ))
+  expect_equal(
+    # Z_right_mis_match,
+    Z_outer_right_mis_match,
+    data.frame(
+      id_x   = c(NA_integer_),
+      date_x = as.Date(c(NA_integer_), origin = '1970-01-01'),
+      data_x = c(NA_real_),
+      id_y   = c(1L),
+      date_y = as.Date(c('2015-06-02')),
+      data_y = c(-10.0)
+    ))
 
 })
 

@@ -16,9 +16,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// InnerFuzzyDateJoin
-DataFrame InnerFuzzyDateJoin(DataFrame x, DataFrame y, String x_id_col, String y_id_col, String x_date_col, String y_date_col, int x_intvl_less, int x_intvl_more);
-RcppExport SEXP _FuzzyDateJoin_InnerFuzzyDateJoin(SEXP xSEXP, SEXP ySEXP, SEXP x_id_colSEXP, SEXP y_id_colSEXP, SEXP x_date_colSEXP, SEXP y_date_colSEXP, SEXP x_intvl_lessSEXP, SEXP x_intvl_moreSEXP) {
+// InnerRows
+DataFrame InnerRows(DataFrame x, DataFrame y, String x_id_col, String y_id_col, String x_date_col, String y_date_col, int x_intvl_less, int x_intvl_more);
+RcppExport SEXP _FuzzyDateJoin_InnerRows(SEXP xSEXP, SEXP ySEXP, SEXP x_id_colSEXP, SEXP y_id_colSEXP, SEXP x_date_colSEXP, SEXP y_date_colSEXP, SEXP x_intvl_lessSEXP, SEXP x_intvl_moreSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -30,13 +30,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< String >::type y_date_col(y_date_colSEXP);
     Rcpp::traits::input_parameter< int >::type x_intvl_less(x_intvl_lessSEXP);
     Rcpp::traits::input_parameter< int >::type x_intvl_more(x_intvl_moreSEXP);
-    rcpp_result_gen = Rcpp::wrap(InnerFuzzyDateJoin(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more));
+    rcpp_result_gen = Rcpp::wrap(InnerRows(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more));
     return rcpp_result_gen;
 END_RCPP
 }
-// LeftFuzzyDateJoin
-DataFrame LeftFuzzyDateJoin(DataFrame x, DataFrame y, String x_id_col, String y_id_col, String x_date_col, String y_date_col, int x_intvl_less, int x_intvl_more);
-RcppExport SEXP _FuzzyDateJoin_LeftFuzzyDateJoin(SEXP xSEXP, SEXP ySEXP, SEXP x_id_colSEXP, SEXP y_id_colSEXP, SEXP x_date_colSEXP, SEXP y_date_colSEXP, SEXP x_intvl_lessSEXP, SEXP x_intvl_moreSEXP) {
+// OuterLeftRows
+DataFrame OuterLeftRows(DataFrame x, DataFrame y, String x_id_col, String y_id_col, String x_date_col, String y_date_col, int x_intvl_less, int x_intvl_more);
+RcppExport SEXP _FuzzyDateJoin_OuterLeftRows(SEXP xSEXP, SEXP ySEXP, SEXP x_id_colSEXP, SEXP y_id_colSEXP, SEXP x_date_colSEXP, SEXP y_date_colSEXP, SEXP x_intvl_lessSEXP, SEXP x_intvl_moreSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,15 +48,15 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< String >::type y_date_col(y_date_colSEXP);
     Rcpp::traits::input_parameter< int >::type x_intvl_less(x_intvl_lessSEXP);
     Rcpp::traits::input_parameter< int >::type x_intvl_more(x_intvl_moreSEXP);
-    rcpp_result_gen = Rcpp::wrap(LeftFuzzyDateJoin(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more));
+    rcpp_result_gen = Rcpp::wrap(OuterLeftRows(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_FuzzyDateJoin_getMinIndex", (DL_FUNC) &_FuzzyDateJoin_getMinIndex, 1},
-    {"_FuzzyDateJoin_InnerFuzzyDateJoin", (DL_FUNC) &_FuzzyDateJoin_InnerFuzzyDateJoin, 8},
-    {"_FuzzyDateJoin_LeftFuzzyDateJoin", (DL_FUNC) &_FuzzyDateJoin_LeftFuzzyDateJoin, 8},
+    {"_FuzzyDateJoin_InnerRows", (DL_FUNC) &_FuzzyDateJoin_InnerRows, 8},
+    {"_FuzzyDateJoin_OuterLeftRows", (DL_FUNC) &_FuzzyDateJoin_OuterLeftRows, 8},
     {NULL, NULL, 0}
 };
 

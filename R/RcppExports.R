@@ -20,8 +20,8 @@ getMinIndex <- function(v) {
 #' @param x_intvl_less Number of days before X date to match to Y date. Defaults to 0.
 #' @param x_intvl_more Number of days after X date to match to Y date. Defaults to 0.
 #' @export
-InnerFuzzyDateJoin <- function(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less = 0L, x_intvl_more = 0L) {
-    .Call(`_FuzzyDateJoin_InnerFuzzyDateJoin`, x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more)
+InnerRows <- function(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less = 0L, x_intvl_more = 0L) {
+    .Call(`_FuzzyDateJoin_InnerRows`, x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more)
 }
 
 #' Left fuzzy date join
@@ -35,7 +35,7 @@ InnerFuzzyDateJoin <- function(x, y, x_id_col, y_id_col, x_date_col, y_date_col,
 #' @param x_intvl_less Number of days before X date to match to Y date. Defaults to 0.
 #' @param x_intvl_more Number of days after X date to match to Y date. Defaults to 0.
 #' @export
-LeftFuzzyDateJoin <- function(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less = 0L, x_intvl_more = 0L) {
-    .Call(`_FuzzyDateJoin_LeftFuzzyDateJoin`, x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more)
+OuterLeftRows <- function(x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less = 0L, x_intvl_more = 0L) {
+    .Call(`_FuzzyDateJoin_OuterLeftRows`, x, y, x_id_col, y_id_col, x_date_col, y_date_col, x_intvl_less, x_intvl_more)
 }
 
