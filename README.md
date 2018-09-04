@@ -34,26 +34,26 @@ Y <- data.frame(
 ```r
 intvl_less <- 5
 intvl_more <- 3
-inner_fuzzy_date_join(x = X, y = Y,
-                      x_id_col = "x_id", y_id_col = "y_id",
-                      x_date_col = "x_date", y_date_col = "y_date",
-                      x_intvl_less = intvl_less, x_intvl_more = intvl_more,
-                      keep_y_id = FALSE
-                      )
+inner(x = X, y = Y,
+      x_id_col = "x_id", y_id_col = "y_id",
+      x_date_col = "x_date", y_date_col = "y_date",
+      x_intvl_less = intvl_less, x_intvl_more = intvl_more,
+      keep_y_id = FALSE
+      )
 
-left_fuzzy_date_join(x = X, y = Y,
-                     x_id_col = "x_id", y_id_col = "y_id",
-                     x_date_col = "x_date", y_date_col = "y_date" #,
-                     # x_intvl_less = 0, x_intvl_more = 0,
-                     # keep_y_id = TRUE
-                     )
+outer_left(x = X, y = Y,
+           x_id_col = "x_id", y_id_col = "y_id",
+           x_date_col = "x_date", y_date_col = "y_date" #,
+           # x_intvl_less = 0, x_intvl_more = 0,
+           # keep_y_id = TRUE
+           )
 
 intvl_less <- 1
 intvl_more <- 10
-right_fuzzy_date_join(x = X, y = Y,
-                      x_id_col = "x_id", y_id_col = "y_id",
-                      x_date_col = "x_date", y_date_col = "y_date",
-                      y_intvl_less = intvl_less, y_intvl_more = intvl_more,
-                      keep_x_id = FALSE
-                      )
+outer_right(x = X, y = Y,
+            x_id_col = "x_id", y_id_col = "y_id",
+            x_date_col = "x_date", y_date_col = "y_date",
+            y_intvl_less = intvl_less, y_intvl_more = intvl_more,
+            keep_x_id = FALSE
+            )
 ```
