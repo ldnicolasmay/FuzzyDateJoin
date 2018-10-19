@@ -32,15 +32,15 @@
 #'
 #' # Use default values where possible
 #' inner(x = X, y = Y,
-#'       x_id = "x_id", y_id = "y_id",
-#'       x_date = "x_date", y_date = "y_date")
+#'       x_id_col = "x_id", y_id_col = "y_id",
+#'       x_date_col = "x_date", y_date_col = "y_date")
 #'
 #' # Define fuzzy date matching intervals and remove `y_id` column
 #' intvl_less <- 5
 #' intvl_more <- 3
 #' inner(x = X, y = Y,
-#'       x_id = "x_id", y_id = "y_id",
-#'       x_date = "x_date", y_date = "y_date",
+#'       x_id_col = "x_id", y_id_col = "y_id",
+#'       x_date_col = "x_date", y_date_col = "y_date",
 #'       x_intvl_less = intvl_less, x_intvl_more = intvl_more,
 #'       keep_y_id = FALSE)
 
