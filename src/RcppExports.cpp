@@ -5,17 +5,6 @@
 
 using namespace Rcpp;
 
-// getMinIndex
-int getMinIndex(Rcpp::IntegerVector v);
-RcppExport SEXP _FuzzyDateJoin_getMinIndex(SEXP vSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type v(vSEXP);
-    rcpp_result_gen = Rcpp::wrap(getMinIndex(v));
-    return rcpp_result_gen;
-END_RCPP
-}
 // InnerRows
 DataFrame InnerRows(DataFrame x, DataFrame y, String x_id_col, String y_id_col, String x_date_col, String y_date_col, int x_intvl_less, int x_intvl_more);
 RcppExport SEXP _FuzzyDateJoin_InnerRows(SEXP xSEXP, SEXP ySEXP, SEXP x_id_colSEXP, SEXP y_id_colSEXP, SEXP x_date_colSEXP, SEXP y_date_colSEXP, SEXP x_intvl_lessSEXP, SEXP x_intvl_moreSEXP) {
@@ -52,11 +41,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// getMinIndex
+int getMinIndex(Rcpp::IntegerVector v);
+RcppExport SEXP _FuzzyDateJoin_getMinIndex(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(getMinIndex(v));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_FuzzyDateJoin_getMinIndex", (DL_FUNC) &_FuzzyDateJoin_getMinIndex, 1},
     {"_FuzzyDateJoin_InnerRows", (DL_FUNC) &_FuzzyDateJoin_InnerRows, 8},
     {"_FuzzyDateJoin_OuterLeftRows", (DL_FUNC) &_FuzzyDateJoin_OuterLeftRows, 8},
+    {"_FuzzyDateJoin_getMinIndex", (DL_FUNC) &_FuzzyDateJoin_getMinIndex, 1},
     {NULL, NULL, 0}
 };
 
